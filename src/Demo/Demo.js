@@ -2,10 +2,13 @@ import React, { Component, Fragment } from "react";
 import "./Demo.css";
 import { Input, Button, List } from "antd";
 import store from "../store/store";
+import { connect } from "react-redux";
+import { INPUT_CHANGE, CLICK_LISTITEM, ADD_CLICK } from "../store/typeCretors";
 
 class Demo extends Component {
   constructor(props) {
     super(props);
+    console.log("props: ", props);
     this.state = {
       status: "",
       statusList: ["吃饭", "睡觉", "打游戏"],
@@ -25,11 +28,11 @@ class Demo extends Component {
       this.props.history.push("/App");
     }
     this.setState({ statusList: [...statusList, this.state.status] });
-    const action = {
-      type: "inputChange",
-      value: [...statusList, this.state.status],
-    };
-    store.dispatch(action);
+    // const action = {
+    //   type: ADD_CLICK,
+    //   value: [...statusList, this.state.status],
+    // };
+    // store.dispatch(action);
   };
   deleteStatus = (index) => {
     let status = this.state.statusList;
@@ -40,13 +43,14 @@ class Demo extends Component {
     let status = this.state.data;
     status.splice(index, 1);
     const action = {
-      type: "clickListItem",
+      type: CLICK_LISTITEM,
       value: status,
     };
     store.dispatch(action);
   };
   componentDidMount() {}
   render() {
+    let { addClick, inputValue, inputChange } = this.props;
     return (
       <Fragment>
         <div>
@@ -55,9 +59,18 @@ class Demo extends Component {
             onChange={this.setStatus.bind(this)}
             style={{ width: "10%", marginRight: "10px" }}
           />
-          <Button onClick={this.addStatus.bind(this)} type="primary">
+          <Button
+            onClick={addClick.bind(this, this.props.inputValue)}
+            type="primary"
+          >
             添加
           </Button>
+          <hr />
+          <Input
+            value={inputValue}
+            onChange={inputChange}
+            style={{ width: "10%", marginRight: "10px" }}
+          />
           <div style={{ width: "300px", margin: "10px" }}>
             <List
               bordered
@@ -89,4 +102,29 @@ class Demo extends Component {
   }
 }
 
-export default Demo;
+const setToProps = (state) => {
+  return {
+    inputValue: state.inputValue,
+  };
+};
+
+const setToDispatch = (dispatch) => {
+  return {
+    inputChange: (e) => {
+      const action = {
+        type: INPUT_CHANGE,
+        value: e.target.value,
+      };
+      dispatch(action);
+    },
+    addClick: (value) => {
+      const action = {
+        type: ADD_CLICK,
+        value,
+      };
+      dispatch(action);
+    },
+  };
+};
+
+export default connect(setToProps, setToDispatch)(Demo);

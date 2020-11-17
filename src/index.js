@@ -3,11 +3,15 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import "antd/dist/antd.css";
 import AppRouter from "./AppRouter";
+import { Provider } from "react-redux";
+import store from "./store/store";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   // <React.StrictMode>
-    <AppRouter />,
+  <Provider store={store}>
+    <AppRouter />
+  </Provider>,
   // </React.StrictMode>,
   document.getElementById("root")
 );
