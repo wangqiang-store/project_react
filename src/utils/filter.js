@@ -4,20 +4,21 @@ export function filterTime(time, sym = "-", isHMS = true) {
     return "";
   }
   let d = new Date(time);
+  let Hours, Minutes, Seconds;
   if (d.getHours() < 10) {
-    var Hours = "0" + d.getHours();
+    Hours = "0" + d.getHours();
   } else {
-    var Hours = d.getHours();
+    Hours = d.getHours();
   }
   if (d.getMinutes() < 10) {
-    var Minutes = "0" + d.getMinutes();
+    Minutes = "0" + d.getMinutes();
   } else {
-    var Minutes = d.getMinutes();
+    Minutes = d.getMinutes();
   }
   if (d.getSeconds() < 10) {
-    var Seconds = "0" + d.getSeconds();
+    Seconds = "0" + d.getSeconds();
   } else {
-    var Seconds = d.getSeconds();
+    Seconds = d.getSeconds();
   }
 
   if (isHMS) {
