@@ -1,0 +1,70 @@
+.node {
+  position: relative;
+}
+.node-item1 {
+  color: red;
+  position: absolute;
+  left: 11%;
+  top: 45%;
+  transform: translate(-50%, -100%);
+  transform-origin: center;
+}
+.node-item2 {
+  color: red;
+  position: absolute;
+  left: 4%;
+  top: 41%;
+  transform: translate(-50%, -100%);
+  transform-origin: center;
+}
+.node-item3 {
+  color: red;
+  position: absolute;
+  left: 57%;
+  top: 28%;
+  transform: translate(-50%, -100%);
+  transform-origin: center;
+}
+.node-item4 {
+  color: green;
+  position: absolute;
+  left: 47%;
+  top: 34%;
+  transform: translate(-50%, -100%);
+  transform-origin: center;
+}
+.node-item5 {
+  color: green;
+  position: absolute;
+  left: 34%;
+  top: 60%;
+  transform: translate(-50%, -100%);
+  transform-origin: center;
+}
+.node-item6 {
+  color: red;
+  position: absolute;
+  left: 79%;
+  top: 16%;
+  transform: translate(-50%, -100%);
+  transform-origin: center;
+}
+.node-item7 {
+  color: green;
+  position: absolute;
+  left: 35%;
+  top: 42.1%;
+  transform: translate(-50%, -100%);
+  transform-origin: center;
+}
+.node-item8 {
+  color: green;
+  position: absolute;
+  left: 25%;
+  top: 19%;
+  transform: translate(-50%, -100%);
+  transform-origin: center;
+}
+img {
+  -webkit-user-drag: none;
+}
